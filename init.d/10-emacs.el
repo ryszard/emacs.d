@@ -30,6 +30,11 @@
 (setq savehist-file "~/.emacs.d/.savehist")
 (savehist-mode 1)
 
+;; save places in visited files
+(setq-default save-place t)
+(setq save-place-file "~/.emacs.d/.saveplace")
+(require 'saveplace)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
