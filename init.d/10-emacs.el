@@ -22,7 +22,7 @@
 (setq mouse-wheel-scroll-amount '(0.01))
 
 (global-font-lock-mode t)
-
+(partial-completion-mode t)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
