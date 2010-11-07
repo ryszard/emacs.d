@@ -32,8 +32,7 @@ from there."
 				   (lambda (d) 
 				     (file-exists-p (concat d "settings.py"))))))
     (when ud
-      (first (last (split-string (file-name-directory ud) "/"))))))
-
+      (first (last (split-string (file-name-directory ud) "/" t))))))
 
 (defun django-tests-build-command ()
   (let ((current-app (django-find-current-app)))
