@@ -1,0 +1,5 @@
+# -*- coding: utf-8 -*-
+# name: from
+# key: from
+# --
+from $1 import $2
