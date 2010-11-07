@@ -8,6 +8,10 @@ def test_${2:$
   (if (<= (length underscorized) 65)
       underscorized
     (substring underscorized 0 65)))}(self):
-    "${2:}"
+    "${2:$$
+(if (or (< (length yas/text) 76) 
+        (string-match "^\"\".*\"\"$" yas/text))
+    yas/text
+    (format "\"\"%s\"\"" yas/text))}"
     $0
 
