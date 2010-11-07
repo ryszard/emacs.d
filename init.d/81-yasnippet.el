@@ -1,3 +1,9 @@
 (require 'yasnippet)
 (yas/initialize)
-(yas/load-directory "~/.emacs.d/lisp/yasnippet/snippets")
+
+(setq yas/snippet-dirs 
+      (list 
+       "~/.emacs.d/snippets"
+       "~/.emacs.d/lisp/yasnippet/snippets"))
+
+(yas/load-snippet-dirs)
