@@ -24,6 +24,8 @@
 (global-font-lock-mode t)
 (partial-completion-mode t)
 
+;; imenu
+(global-set-key [(super return)] 'imenu)
 
 ;; history
 
