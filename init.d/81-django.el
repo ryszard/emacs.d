@@ -1,13 +1,6 @@
 ;; run Django shell when editing Django Python code
 
-(defun get-file-in-upstream-dir (location filename)
-  (let* ((dir (file-name-directory location))
-         (path (concat dir filename)))
-    (if (file-exists-p path)
-        path
-      (if (not (equal dir "/"))
-        (get-file-in-upstream-dir (expand-file-name (concat dir "../")) filename)))))
-
+(require 'django)
 (defadvice run-python (before possibly-setup-django-project-environment)
   (let* ((settings-py (get-file-in-upstream-dir buffer-file-name "settings.py"))
          (project-dir (file-name-directory settings-py))
