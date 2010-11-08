@@ -2,6 +2,7 @@
 
 (defvar django-tests-env-vars "FASTER=t")
 
+
 (defun get-file-in-upstream-dir (location filename &optional stop-condition)
   (let* ((dir (file-name-directory location))
          (path (concat dir filename))
@@ -25,34 +26,46 @@ from there."
   "Django testing compilation mode."
   nil)
 
+(define-compilation-mode django-manage-py-mode "Django manage.py"
+  "Django manage.py compilation mode."
+  nil)
+
+
 (defun django-find-current-app (&optional from)
-  (let ((ud 
-	 (get-file-in-upstream-dir (or from (buffer-file-name)) 
-				   "models.py" 
-				   (lambda (d) 
-				     (file-exists-p (concat d "settings.py"))))))
-    (when ud
-      (first (last (split-string (file-name-directory ud) "/" t))))))
+  (when-let (ud 
+	     (get-file-in-upstream-dir 
+	      (or from (buffer-file-name)) 
+	      "models.py" 
+	      (lambda (d) 
+		(file-exists-p (concat d "settings.py")))))
+	    
+	    (first (last (split-string (file-name-directory ud) "/" t)))))
+(django-find-current-app)
 
-(defun django-tests-build-command ()
-  (let ((current-app (django-find-current-app)))
-   (cd (django-project-root))
-   (format "%s ./manage.py test %s" django-tests-env-vars (or current-app ""))))
+(defmacro define-manage-py (name prompt &rest body)
+  `(progn
+     (defun ,name (command-args)
+       "Run Django tests."
+       (interactive
+	(list 
+	 (format 
+	  "cd %s; %s"
+	  (django-project-root)
+	  (read-from-minibuffer 
+	   ,prompt
+	   (progn ,@body)
+	   nil
+	   nil
+	   ',(make-symbol (format "django-%s-history" name))))))
+       (compilation-start 
+	command-args
+	'django-manage-py-mode))
+     (autoload ',name ,(buffer-file-name))))
 
-;;;###autoload
-(defun django-tests (command-args)
-  "Run Django tests."
-  (interactive
-   (list 
-    
-    (read-from-minibuffer "Run django tests (like this): "
-			       (django-tests-build-command)
-			       nil
-			       nil
-			       'django-tests-history)))
-  (compilation-start 
-   command-args
-   'django-tests-mode))
+(define-manage-py django-tests "Run django test (like this): "
+  (format "%s ./manage.py test %s" 
+	  django-tests-env-vars 
+	  (or (django-find-current-app) "")))
 
 (add-hook 'python-mode-hook
 	  (lambda ()
