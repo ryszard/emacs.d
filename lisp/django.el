@@ -40,7 +40,6 @@ from there."
 		(file-exists-p (concat d "settings.py")))))
 	    
 	    (first (last (split-string (file-name-directory ud) "/" t)))))
-(django-find-current-app)
 
 (defmacro define-manage-py (name prompt &rest body)
   `(progn
@@ -59,8 +58,7 @@ from there."
 	   ',(make-symbol (format "django-%s-history" name))))))
        (compilation-start 
 	command-args
-	'django-manage-py-mode))
-     (autoload ',name ,(buffer-file-name))))
+	'django-manage-py-mode))))
 
 (define-manage-py django-tests "Run django test (like this): "
   (format "%s ./manage.py test %s" 
