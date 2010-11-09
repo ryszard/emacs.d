@@ -40,10 +40,8 @@ buffer and point."
   (elisp-push-definition-stack)
   (or
    (find-function-do-it (function-called-at-point) nil (lambda (x) (switch-to-buffer x) t))
-   (find-function-do-it (variable-at-point) 'defvar (lambda (x) (switch-to-buffer x) t))
-   (progn
-     (ring-remove *elisp-definition-stack* 0)
-     (error "No known definitions for symbol at point."))))
+   (when (not (zerop (variable-at-point)))
+    (find-function-do-it (variable-at-point) 'defvar (lambda (x) (switch-to-buffer x) t)))))
 
 
 ;;;;; Add-hook
