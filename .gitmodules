@@ -1,3 +1,6 @@
 [submodule "lisp/markdown-mode"]
 	path = lisp/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
+[submodule "lisp/emacs_chrome"]
+	path = lisp/emacs_chrome
+	url = git@github.com:ryszard/emacs_chrome.git
