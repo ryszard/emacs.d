@@ -1,0 +1,1 @@
+(setq python-check-command "pyflakes")
