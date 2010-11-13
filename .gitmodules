@@ -4,3 +4,9 @@
 [submodule "lisp/emacs_chrome"]
 	path = lisp/emacs_chrome
 	url = git@github.com:ryszard/emacs_chrome.git
+[submodule "lisp/cofee-mode"]
+	path = lisp/cofee-mode
+	url = git@github.com:ryszard/coffee-mode.git
+[submodule "lisp/undo-tree"]
+	path = lisp/undo-tree
+	url = http://www.dr-qubit.org/git/undo-tree.git
