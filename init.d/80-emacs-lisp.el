@@ -1,3 +1,5 @@
+(require 'find-func)
+
 ; inspired by slime.el. Look for inspiration to message arglist of
 ; function under point.
 (defun elisp-indent-and-complete-symbol ()
