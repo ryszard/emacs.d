@@ -22,4 +22,5 @@
  "/opt/local/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages")
  (push "/opt/local/bin" exec-path))
 
-
+(dolist (el '("/usr/local/bin"))
+  (push el exec-path))
