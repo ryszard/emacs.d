@@ -36,3 +36,6 @@
 (setq-default save-place t)
 (setq save-place-file "~/.emacs.d/.saveplace")
 (require 'saveplace)
+
+(setq enable-recursive-minibuffers t)
+(setq ls-lisp-dirs-first t)
