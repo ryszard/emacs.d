@@ -51,6 +51,7 @@ buffer and point."
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (local-set-key [tab] 'elisp-indent-and-complete-symbol)
                                   (local-set-key "\M-." 'elisp-edit-definition)
+				  (local-set-key "\C-j" 'eval-print-last-sexp)
                                   (local-set-key "\M-," 'elisp-pop-definition-stack)))
 
 (define-key read-expression-map [(tab)] 'lisp-complete-symbol)
