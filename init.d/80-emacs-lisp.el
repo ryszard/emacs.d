@@ -52,3 +52,5 @@ buffer and point."
                                   (local-set-key [tab] 'elisp-indent-and-complete-symbol)
                                   (local-set-key "\M-." 'elisp-edit-definition)
                                   (local-set-key "\M-," 'elisp-pop-definition-stack)))
+
+(define-key read-expression-map [(tab)] 'lisp-complete-symbol)
