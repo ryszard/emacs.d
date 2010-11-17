@@ -39,3 +39,4 @@
 
 (setq enable-recursive-minibuffers t)
 (setq ls-lisp-dirs-first t)
+(setq comint-prompt-read-only t)
