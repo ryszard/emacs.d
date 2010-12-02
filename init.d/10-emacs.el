@@ -40,3 +40,11 @@
 (setq enable-recursive-minibuffers t)
 (setq ls-lisp-dirs-first t)
 (setq comint-prompt-read-only t)
+(setq ring-bell-function 'ignore)
+(set-cursor-color "coral3")
+
+;;; cycling windows if there si more than one frame
+(global-set-key (kbd "s-`") 'next-multiframe-window)
+(global-set-key (kbd "s-~") 'previous-multiframe-window)
+
+(setq-default display-buffer-reuse-frames t)
