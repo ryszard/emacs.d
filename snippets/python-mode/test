@@ -4,10 +4,15 @@
 # contributor: Ryszard Szopa <ryszard.szopa@gmail.com>
 # --
 def test_${2:$
-(let ((underscorized (replace-regexp-in-string "\s+" "_" (replace-regexp-in-string "[^a-z ]" "" (downcase text)))))
-  (if (<= (length underscorized) 65)
-      underscorized
-    (substring underscorized 0 65)))}(self):
+(let* ((downcased (downcase text))
+       (no-stopwords (replace-regexp-in-string (regexp-opt '("the" "is" "a" "an" "it") 'words) "" downcased))
+       (stripped (replace-regexp-in-string "^\\s+" "" no-stopwords))
+       (only-alphanumeric  (replace-regexp-in-string "[^a-z ]" ""  stripped))
+       (as-identifier (replace-regexp-in-string "\s+" "_" only-alphanumeric))
+       )
+  (if (<= (length as-identifier) 65)
+      as-identifier
+    (substring as-identifier 0 65)))}(self):
     "${2:$$
 (if (or (< (length yas/text) 76) 
         (string-match "^\"\".*\"\"$" yas/text))
