@@ -10,3 +10,6 @@
 [submodule "lisp/undo-tree"]
 	path = lisp/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "lisp/clojure-mode"]
+	path = lisp/clojure-mode
+	url = https://github.com/technomancy/clojure-mode.git
