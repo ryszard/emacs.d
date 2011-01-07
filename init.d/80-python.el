@@ -24,3 +24,7 @@ reached start of buffer."
       (if (looking-at def-re)
       (setq found (match-string 1))))
     found))
+
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "M-,") 'pop-tag-mark)))
