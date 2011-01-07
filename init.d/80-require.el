@@ -5,3 +5,5 @@
 
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+(which-func-mode)
