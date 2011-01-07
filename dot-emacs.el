@@ -26,6 +26,7 @@
  '(ns-pop-up-frames nil)
  '(paren-match-face (quote paren-face-match))
  '(paren-sexp-mode t)
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
  '(show-paren-mode t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
