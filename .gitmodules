@@ -13,3 +13,6 @@
 [submodule "lisp/clojure-mode"]
 	path = lisp/clojure-mode
 	url = https://github.com/technomancy/clojure-mode.git
+[submodule "lisp/slime"]
+	path = lisp/slime
+	url = https://github.com/technomancy/slime.git
